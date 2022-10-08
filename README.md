@@ -5,12 +5,12 @@
 ### << Semester, Year >>
 ### [Assignment Description](https://docs.google.com/document/d/1H4R6yLL7som1lglyXWZ04RvTp_RvRFCCBn6sqv-82ps/edit?usp=sharing)
 
-<< [repl](#) >>
+https://replit.com/join/nozsozsdue-michellelu11
 
 << [link to demo presentation slides](#) >>
 
-### Team: << team name >>
-#### << Team Members >>
+### Team: Monkey Squared
+#### Nikki Tan and Michelle Lu
 
 ***
 
