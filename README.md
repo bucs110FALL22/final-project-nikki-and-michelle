@@ -1,8 +1,8 @@
 :warning: Everything between << >> needs to be replaced (remove << >> after replacing)
 # CS110 Project Proposal
-# << Project Title >>
+# CATS VS DOGS
 ## CS 110 Final Project
-### << Semester, Year >>
+### Fall, 2022
 ### [Assignment Description](https://docs.google.com/document/d/1H4R6yLL7som1lglyXWZ04RvTp_RvRFCCBn6sqv-82ps/edit?usp=sharing)
 
 https://replit.com/join/nozsozsdue-michellelu11
@@ -16,7 +16,7 @@ https://replit.com/join/nozsozsdue-michellelu11
 
 ## Project Description
 
-<< Give an overview of your project >>
+Our game will be a battle between cats and dogs! The user will have an option to either choose a dog and cat as their player. If the dog is chosen as the player, the enemy will be the cat. If the cat is chosen as the player, the enemy will be the dog. The player will move left and right across the screen. It will shoot at the enemy (there will be multiple enemies postioned randomly throughout the screen) to earn inventory (bones or fish), which helps them level up. There will also be treats appearing randomly on the screen for power ups.
 
 ***    
 
