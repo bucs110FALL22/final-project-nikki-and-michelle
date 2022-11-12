@@ -41,9 +41,10 @@ Our game will be a battle between cats and dogs! The user will have an option to
          For each additional module you should include
          - url for the module documentation
          - a short description of the module >>
+           
 * Class Interface Design
-    * << A simple drawing that shows the class relationships in your code (see below for an example). This does not need to be overly detailed, but should show how your code fits into the Model/View/Controller paradigm. >>
-        * ![class diagram](assets/class_diagram.jpg) 
+    * [class diagram](https://drive.google.com/file/d/1McgleuoHiwyq2lsYEGvpBBlLcfoMIo3N/view?usp=sharing)
+  
 * Classes
     * Ability - How the player will be able to attack the enemies. The ability will travel upward since the player character will be located at the bottom of the screen and the enemies will be coming from the top.
     * Background - Moving grass-like background that will move upwards, giving the impression that the player character is advancing forward. 

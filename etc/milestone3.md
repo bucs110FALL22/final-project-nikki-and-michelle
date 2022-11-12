@@ -8,7 +8,7 @@ class Player:
     self.movement = keyboard 
     self.x_coord = x_coord
     self.y_coord = y_coord 
-
+#this is the player, which is displayed as either a cat of dog
 
 ## Class Interface 2
 
@@ -17,7 +17,7 @@ class Enemy:
     self.hits_to_kill = 1 
     self.postion = random 
     self.alive = True
-    
+#this is a the enemy, which is displayed as both a cat and dog
 ## Class Interface 3
 
 class Background:
@@ -25,3 +25,4 @@ class Background:
     self.grass = []
     self.color = 'green'
     self.treats = []
+#this is the background which is a green screen to resemble grass
