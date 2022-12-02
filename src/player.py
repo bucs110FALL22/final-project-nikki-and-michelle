@@ -1,42 +1,63 @@
 import pygame
-from src.utility import Utility
+from src.weapon import Weapon
 
-class Player(Utility):
-  def __init__(self, x, y, health=100):
-    super().__init__(x, y, health)
-    self.character_img = pygame.transform.scale(pygame.image.load("assets/dog.png"), (85, 75))
-    self.laser_img = pygame.transform.scale(pygame.image.load("assets/bone.png"), (60, 50))
-    self.mask = pygame.mask.from_surface(self.character_img)
 
-  def laser_movement(self, speed, objects):
+width = 750
+height = 750
+
+class Player():
+  COOLDOWN = 30
+  
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y
+    self.ship_img = pygame.transform.scale(pygame.image.load("assets/dog.png"), (85, 75))
+    self.weapon_img = pygame.transform.scale(pygame.image.load("assets/ball.png"), (35, 35))
+    self.mask = pygame.mask.from_surface(self.ship_img)
+
+    self.weapons = []
+    self.cool_down_counter = 0
+      
+
+  def move_weapons(self, speed, objs):
     self.cooldown()
-    for laser in self.lasers:
-      laser.move(speed)
-      if laser.off_screen(height):
-        self.lasers.remove(laser)
+    for weapon in self.weapons:
+      weapon.move(speed)
+      if weapon.off_screen(height):
+        self.weapons.remove(weapon)
       else:
-        for object in objects:
-          if laser.collision(object):
-            objects.remove(object)
-            if laser in self.lasers:
-              self.lasers.remove(laser)
+        for obj in objs:
+          if weapon.collision(obj):
+            objs.remove(obj)
+            if weapon in self.weapons:
+              self.weapons.remove(weapon)
 
-  def healthbar(self, window):
-    pygame.draw.rect(window, (255,0,0), (self.x, self.y + self.character_img.get_height() + 10, self.character_img.get_width(), 10))
-    pygame.draw.rect(window, (0,255,0), (self.x, self.y + self.ship_img.get_height() + 10, self.ship_img.get_width() * (self.health/self.max_health), 10))
+
+  def cooldown(self):
+    if self.cool_down_counter >= self.COOLDOWN:
+      self.cool_down_counter = 0
+    elif self.cool_down_counter > 0:
+      self.cool_down_counter += 1
+
+  def shoot(self):
+    if self.cool_down_counter == 0:
+      weapon = Weapon(self.x+15, self.y, self.weapon_img)
+      self.weapons.append(weapon)
+      self.cool_down_counter = 1
+
 
   def draw(self, window):
-    super().draw(window)
-    self.healthbar(window)
-    
+    window.blit(self.ship_img, (self.x, self.y))
+    for weapon in self.weapons:
+      weapon.draw(window)
 
 
+  def get_width(self):
+    return self.ship_img.get_width()
 
+  def get_height(self):
+    return self.ship_img.get_height()
 
-    
-
-
-    
 
   def move_left(self):
     self.rect.x -= self.speed

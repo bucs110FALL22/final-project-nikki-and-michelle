@@ -1,14 +1,21 @@
 import pygame
-import random
 
-class Enemy(pygame.sprite.Sprite): 
-  def __init__(self):
-    super().__init__(self)
-    self.health = 1
-    self.speed = 3
-    self.image = pygame.image.load()
-    self.rect = self.image.get_rect()
+class Enemy():
+  def __init__(self, x, y):
+      self.x = x
+      self.y = y
+      self.ship_img = pygame.transform.scale(pygame.image.load("assets/cat.png"), (60, 50))
+       
+      self.mask = pygame.mask.from_surface(self.ship_img)
 
-    
-  def move_down(self):
-    self.rect.y += random.range(-self.speed, self.speed+1)
+  def move(self, speed):
+      self.y += speed
+
+  def draw(self, window):
+      window.blit(self.ship_img, (self.x, self.y))
+
+  def get_width(self):
+      return self.ship_img.get_width()
+
+  def get_height(self):
+      return self.ship_img.get_height()

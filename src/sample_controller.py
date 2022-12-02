@@ -1,60 +1,90 @@
 import pygame
+import random
+from src.player import Player
+from src.enemy import Enemy
+
 pygame.font.init()
 
+width = 750
+height = 750
+screen = pygame.display.set_mode((width, height))
+pygame.display.set_caption("CAT ATTACK")
+background = pygame.transform.scale(pygame.image.load("assets/grass.png"), (width, height))
 
-class Controller:
+# class Controller:
   
-  def __init__(self):
-    #setup pygame data
-    pygame.init()
-    self.screen = pygame.display.set_mode()
-    self.background = pygame.Surface(pygame.display.get_window_size())
-    self.background.fill((0, 0, 0))
-    
-  def mainloop(self):
+  # def __init__(self):
+  #   #setup pygame data
+
+  # def mainloop(self):
     #select state loop
     
-
   ### below are some sample loop states ###
 
-  def menuloop(self):
-    
+  # def menuloop(self):
       #event loop
-
       #update data
-
       #redraw
 
-    run = True
-    FPS = 60
-    level = 0
-    lives = 3
+  # def gameoverloop(self):
+      #event loop
+      #update data
+      #redraw
 
+  
+
+def main():
+    run = True
+    fps = 60
+    level = 0
+    lives = 5
+    main_font = pygame.font.SysFont("comicsans", 50)
+    lost_font = pygame.font.SysFont("comicsans", 60)
 
     enemies = []
     wave_length = 5
     enemySpeed = 1
 
     playerSpeed = 5
-    laserSpeed = 5
+    weaponSpeed = 5
 
     player = Player(300, 630)
 
     clock = pygame.time.Clock()
 
     lost = False
-    lost_count = 0
+    lostCount = 0
 
-    while run:
-        clock.tick(FPS)
-        redraw_window()
+    def redraw_window():
+        screen.blit(background, (0,0))
+        # draw text
+        lives_label = main_font.render(f"Lives: {lives}", 1, (255,255,255))
+        level_label = main_font.render(f"Level: {level}", 1, (255,255,255))
 
-        if lives <= 0 or player.health <= 0:
-            lost = True
-            lost_count += 1
+        screen.blit(lives_label, (10, 10))
+        screen.blit(level_label, (width - level_label.get_width() - 10, 10))
+
+        for enemy in enemies:
+            enemy.draw(screen)
+
+        player.draw(screen)
 
         if lost:
-            if lost_count > FPS * 3:
+            lost_label = lost_font.render("You Lost!!", 1, (255,255,255))
+            screen.blit(lost_label, (width/2 - lost_label.get_width()/2, 350))
+
+        pygame.display.update()
+
+    while run:
+        clock.tick(fps)
+        redraw_window()
+
+        if lives <= 0:
+            lost = True
+            lostCount += 1
+
+        if lost:
+            if lostCount > fps * 3:
                 run = False
             else:
                 continue
@@ -63,64 +93,43 @@ class Controller:
             level += 1
             wave_length += 5
             for i in range(wave_length):
-                enemy = Enemy(random.randrange(50, WIDTH-100), random.randrange(-1500, -100))
+                enemy = Enemy(random.randrange(50, width-100), random.randrange(-1500, -100))
                 enemies.append(enemy)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit()
 
+              
       
-  def gameloop(self):
-      #event loop
-
-      #update data
-
-      #redraw
-
-     keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] and player.x - player_vel > 0: 
-            player.x -= player_vel
-        if keys[pygame.K_RIGHT] and player.x + player_vel + player.get_width() < WIDTH:
-            player.x += player_vel
-        if keys[pygame.K_UP] and player.y - player_vel > 0:
-            player.y -= player_vel
-        if keys[pygame.K_DOWN] and player.y + player_vel + player.get_height() + 15 < HEIGHT:
-            player.y += player_vel
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT] and player.x - playerSpeed > 0:
+            player.x -= playerSpeed
+        if keys[pygame.K_RIGHT] and player.x + playerSpeed + player.get_width() < width:
+            player.x += playerSpeed
+        if keys[pygame.K_UP] and player.y - playerSpeed > 0:
+            player.y -= playerSpeed
+        if keys[pygame.K_DOWN] and player.y + playerSpeed + player.get_height() + 15 < height: 
+            player.y += playerSpeed
         if keys[pygame.K_SPACE]:
             player.shoot()
 
-        for enemy in enemies[:]:
+        for enemy in enemies[:]:          
             enemy.move(enemySpeed)
-            enemy.move_lasers(laserSpeed, player)
+            
+            if enemy.y + enemy.get_height() > height:
+              lives -= 1
+              enemies.remove(enemy)
 
-            if random.randrange(0, 2*60) == 1:
-                enemy.shoot()
+        player.move_weapons(-weaponSpeed, enemies)
 
-            if collide(enemy, player):
-                player.health -= 10
-                enemies.remove(enemy)
-            elif enemy.y + enemy.get_height() > HEIGHT:
-                lives -= 1
-                enemies.remove(enemy)
-
-        player.move_lasers(-laserSpeed, enemies)
-
-  
-    
-  def gameoverloop(self):
-      #event loop
-
-      #update data
-
-      #redraw
-
-    title_font = pygame.font.SysFont("comicsans", 70)
+def main_menu():
+    title_font = pygame.font.SysFont("timenewroman", 70)
     run = True
     while run:
-        WIN.blit(BG, (0,0))
-        title_label = title_font.render("Press the mouse to begin...", 1, (255,255,255))
-        WIN.blit(title_label, (WIDTH/2 - title_label.get_width()/2, 350))
+        screen.blit(background, (0,0))
+        title_label = title_font.render("Press to begin", 1, (0,0,0))
+        screen.blit(title_label, (width/2 - title_label.get_width()/2, 350))
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -131,9 +140,3 @@ class Controller:
 
 
 main_menu()
-
-
-
-   
-      
-       
