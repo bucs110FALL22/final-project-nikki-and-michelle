@@ -89,7 +89,7 @@ The Project is broken down into the following file structure:
 
 ## Testing
 
-*  Because there are so many running parts to the game, we approached the each part individually before intergarting them together. We ran through each function alone, then we ran through everything together. Through this method, we were able to debug our code more efficently because there were less lines of code to work with. After we finished debugging each part, we moved on to the next one.
+*  Because there are so many running parts to the game, we approached each part individually before intergarting them together. We ran through each function alone, then we ran through everything together. Through this method, we were able to debug our code more efficently because there were less lines of code to work with. After we finished debugging each part, we moved on to the next one.
 
 ## ATP
 
