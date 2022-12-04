@@ -38,11 +38,11 @@ def main():
     fps = 60
     level = 0
     lives = 5
-    main_font = pygame.font.SysFont("comicsans", 50)
-    lost_font = pygame.font.SysFont("comicsans", 60)
+    main_font = pygame.font.SysFont("ariel", 40)
+    lost_font = pygame.font.SysFont("ariel", 40)
 
     enemies = []
-    wave_length = 5
+    wave = 5
     enemySpeed = 1
 
     playerSpeed = 5
@@ -91,8 +91,8 @@ def main():
 
         if len(enemies) == 0:
             level += 1
-            wave_length += 5
-            for i in range(wave_length):
+            wave += 5
+            for i in range(wave):
                 enemy = Enemy(random.randrange(50, width-100), random.randrange(-1500, -100))
                 enemies.append(enemy)
 
@@ -124,7 +124,7 @@ def main():
         player.move_weapons(-weaponSpeed, enemies)
 
 def main_menu():
-    title_font = pygame.font.SysFont("timenewroman", 70)
+    title_font = pygame.font.SysFont("ariel", 70)
     run = True
     while run:
         screen.blit(background, (0,0))

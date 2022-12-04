@@ -16,14 +16,17 @@ https://replit.com/join/embmmbslcl-michellelu11
 
 ## Project Description
 
-Our game will be a battle between cats and dogs! The user will have an option to either choose a dog and cat as their player. If the dog is chosen as the player, the enemy will be the cat. If the cat is chosen as the player, the enemy will be the dog. The player will move left and right across the bottom of the screen. It will shoot at the enemy (there will be multiple enemies postioned randomly throughout the screen) to earn inventory (bones or fish), which helps them level up. There will also be treats appearing randomly on the screen for power ups.
+Space Invaders is a popular game, and our game is influenced by some of the aspects of that game. Our game will be a battle between cats and dogs! The user will be utilizing a dog as their player. The enemy will be the cat. The player will move left and right across the bottom of the screen. It will shoot at the enemy (there will be multiple enemies postioned randomly throughout the screen) to earn inventory (bones), which helps them level up. There will also be treats appearing randomly on the screen for power ups.
 
 ***    
 
 ## User Interface Design
 
 - **Initial Concept**
-  - << A wireframe or drawing of the user interface concept along with a short description of the interface. You should have one for each screen in your program. For example, if your program has a start screen, game screen, and game over screen, you should include a wireframe / screenshot / drawing of each one and a short description of the components. >>
+  - https://replit.com/@MichelleLu11/monkeysquared#game_screen.JPEG
+    - This is the game screen. It includes the player (dog), enemy (cat), and powerup (bone).
+  - https://replit.com/@MichelleLu11/monkeysquared#menu_screen.JPEG
+    - This is the menu screen. It includes a play button. Upon clicking the play button, the game will start.
     
     
 - **Final GUI**
@@ -59,21 +62,34 @@ The Project is broken down into the following file structure:
 
 * main.py
 * src
-    * << all of your python files should go here >>
+    * controller.py
+    * enemy.py
+    * player.py
+    * weapon.py
 * assets
-    * << all of your media, i.e. images, font files, etc, should go here) >>
+    * background.png
+    * ball.png
+    * cat.png
+    * class_diagram.jpg
+    * dog.png
+    * folercontents.txt
+    * grass.png
+    * start.png
 * etc
-    * << This is a catch all folder for things that are not part of your project, but you want to keep with your project >>
+    * folderecontents.txt
+    * milestone2.md
+    * milestone3.md
 
 ***
 
 ## Tasks and Responsibilities 
-
-   * Outline the team member roles and who was responsible for each class/method, both individual and collaborative.
+* Front End: Nikki and Michelle
+* Back End: Nikki and Michelle
+* During our first meeting, we brain stormed various ideas and with thoughtful consideration, we were able to come together to finalize our idea. After, we met up together in person multiple times to work on the code side by side. However, majoirity of the time, we worked on the code simultaneously virtually by communicating with each other through text message.
 
 ## Testing
 
-* << Describe your testing strategy for your project. >>
+*  
 
 ## ATP
 

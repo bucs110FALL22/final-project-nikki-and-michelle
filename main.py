@@ -1,6 +1,6 @@
 import pygame
 #import your controller
-from src.sample_controller import Controller
+from controller import Controller
 
 
 def main():
