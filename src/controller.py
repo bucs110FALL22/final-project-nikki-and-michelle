@@ -2,141 +2,173 @@ import pygame
 import random
 from src.player import Player
 from src.enemy import Enemy
+from src.booster import Booster
 
-pygame.font.init()
+# # pygame.font.init()
 
-width = 750
-height = 750
+width = 1280
+height = 720
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("CAT ATTACK")
-background = pygame.transform.scale(pygame.image.load("assets/grass.png"), (width, height))
+background = pygame.transform.scale(pygame.image.load("assets/grass.png"), (width, height)) 
 
-# class Controller:
-  
-  # def __init__(self):
-  #   #setup pygame data
+def get_font(size):
+ return pygame.font.Font("assets/font.ttf", size)
 
-  # def mainloop(self):
-    #select state loop
-    
-  ### below are some sample loop states ###
+def collide(object1, object2):
+  offset_x = object2.x - object1.x
+  offset_y = object2.y - object1.y
+  return object1.mask.overlap(object2.mask, (offset_x, offset_y)) != None
 
-  # def menuloop(self):
-      #event loop
-      #update data
-      #redraw
 
-  # def gameoverloop(self):
-      #event loop
-      #update data
-      #redraw
+class Controller():
+  # width = 800
+  # height = 800
+  # screen = pygame.display.set_mode((width, height))
+  # pygame.display.set_caption("CAT ATTACK")
+  # background = pygame.transform.scale(pygame.image.load("assets/grass.png"), (width, height))
 
-  
+  def __init__(self):
+    pygame.init()
+    pygame.font.init()
 
-def main():
-    run = True
+  def collide(object1, object2):
+    offset_x = object2.x - object1.x
+    offset_y = object2.y - object1.y
+    return object1.mask.overlap(object2.mask, (offset_x, offset_y)) != None
+      
+
+  def main(self):
+    print("running main")
+    running = True
     fps = 60
     level = 0
-    lives = 5
-    main_font = pygame.font.SysFont("ariel", 40)
-    lost_font = pygame.font.SysFont("ariel", 40)
+    strength = 5
+    player = Player(400, 720)
+    clock = pygame.time.Clock()
 
     enemies = []
-    wave = 5
+    numEnemy = 5
     enemySpeed = 1
+
+    boosters = []
+    numBooster = random.randrange(1,3)
+    boosterSpeed = 3
 
     playerSpeed = 5
     weaponSpeed = 5
 
-    player = Player(300, 630)
-
-    clock = pygame.time.Clock()
+    mainFont = get_font(30)
+    lostFont = get_font(50)
 
     lost = False
     lostCount = 0
 
-    def redraw_window():
-        screen.blit(background, (0,0))
-        # draw text
-        lives_label = main_font.render(f"Lives: {lives}", 1, (255,255,255))
-        level_label = main_font.render(f"Level: {level}", 1, (255,255,255))
-
-        screen.blit(lives_label, (10, 10))
-        screen.blit(level_label, (width - level_label.get_width() - 10, 10))
-
-        for enemy in enemies:
-            enemy.draw(screen)
-
-        player.draw(screen)
-
-        if lost:
-            lost_label = lost_font.render("You Lost!!", 1, (255,255,255))
-            screen.blit(lost_label, (width/2 - lost_label.get_width()/2, 350))
-
-        pygame.display.update()
-
-    while run:
-        clock.tick(fps)
-        redraw_window()
-
-        if lives <= 0:
-            lost = True
-            lostCount += 1
-
-        if lost:
-            if lostCount > fps * 3:
-                run = False
-            else:
-                continue
-
-        if len(enemies) == 0:
-            level += 1
-            wave += 5
-            for i in range(wave):
-                enemy = Enemy(random.randrange(50, width-100), random.randrange(-1500, -100))
-                enemies.append(enemy)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                quit()
-
-              
+    def drawScreen():
+      '''Draw all the images onto the screen.'''
+      screen.blit(background, (0,0)) #draw background onto the screen.
+    
+      for enemy in enemies: #draw the enemies (cat images).
+        enemy.draw(screen) 
       
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] and player.x - playerSpeed > 0:
-            player.x -= playerSpeed
-        if keys[pygame.K_RIGHT] and player.x + playerSpeed + player.get_width() < width:
-            player.x += playerSpeed
-        if keys[pygame.K_UP] and player.y - playerSpeed > 0:
-            player.y -= playerSpeed
-        if keys[pygame.K_DOWN] and player.y + playerSpeed + player.get_height() + 15 < height: 
-            player.y += playerSpeed
-        if keys[pygame.K_SPACE]:
-            player.shoot()
+      for booster in boosters: #draw the boosters (bone images).
+        booster.draw(screen) 
+      
+      player.draw(screen) #draw the player character (dog image).
+    
+      strengthLabel = mainFont.render("Strength: " + str(strength), (255,255,255), 0)
+      screen.blit(strengthLabel, (10,10)) #draw text "Strength" and its number onto the screen.
+    
+      levelLabel = mainFont.render("Level: " + str(level), (255,255,255), 0)
+      screen.blit(levelLabel, (width - levelLabel.get_width() - 10, 10)) #draw text "Level" and its number onto the screen.
+    
+      if lost:
+        lostLabel = lostFont.render("Cat Victory", (255,255,255), 25)
+        screen.blit(lostLabel, (width/2 - lostLabel.get_width()/2, 350)) #draw text "Cat Victory" onto the screen when player loses. 
 
-        for enemy in enemies[:]:          
-            enemy.move(enemySpeed)
-            
-            if enemy.y + enemy.get_height() > height:
-              lives -= 1
-              enemies.remove(enemy)
+      pygame.display.update()
 
-        player.move_weapons(-weaponSpeed, enemies)
 
-def main_menu():
-    title_font = pygame.font.SysFont("ariel", 70)
-    run = True
-    while run:
-        screen.blit(background, (0,0))
-        title_label = title_font.render("Press to begin", 1, (0,0,0))
-        screen.blit(title_label, (width/2 - title_label.get_width()/2, 350))
-        pygame.display.update()
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                main()
+    while running:
+      clock.tick(fps)
+      drawScreen() #Draw images.
+
+      if strength <= 0:
+        lost = True
+        lostCount += 1
+
+      if lost:
+        if lostCount > fps*3: #Show lost screen for 3 seconds.
+          running = False
+        else:
+          continue
+
+      '''Increase level, enemy number, and random positioning of enemies' entrance.'''
+      if len(enemies) == 0:
+        level += 1
+        numEnemy += 5
+        for i in range (numEnemy):
+          enemy = Enemy(random.randrange(50, width - 100), random.randrange(-1600,-100), random.choice(["c1", "c2", "c3", "c4"])) 
+          enemies.append(enemy)
+
+
+      '''Generate boosters at certain levels and random positioning of boosters' entrance.'''
+      # if level % 5 == 0 and len(boosters) == 0:
+      if level > 0 and len(boosters) == 0:
+        numBooster += 0
+        for i in range(numBooster):
+          booster = Booster(random.randrange(50, width - 100), random.randrange(-1500, -100))
+          boosters.append(booster)
+
+      for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+          quit()
+
+
+      '''Keyboard detection and restriction of the player movement boundary.'''
+      keyPressed = pygame.key.get_pressed() #Return a dictionary of all the keys and tells you whether the keys are pressed or not.
+      if keyPressed[pygame.K_UP] and player.y - playerSpeed > 0:
+        player.y -= playerSpeed
+      if keyPressed[pygame.K_DOWN] and player.y + playerSpeed + player.get_height() + 15 < height:
+        player.y += playerSpeed
+      if keyPressed[pygame.K_LEFT] and player.x - playerSpeed > 0:
+        player.x -= playerSpeed
+      if keyPressed[pygame.K_RIGHT] and player.x + playerSpeed + player.get_width() < width:
+        player.x += playerSpeed
+      if keyPressed[pygame.K_SPACE]:
+        player.shoot()
+      
+      '''Decrease in strength and removal of enemy that went off screen.'''
+      for enemy in enemies[:]:
+        enemy.move(enemySpeed) #Enemy moves down the screen.
+        if enemy.y + enemy.get_height() > height:
+          strength -= 1
+          enemies.remove(enemy)
+
+
+      '''Increase in strength upon collision between booster image and dog image.'''
+      for booster in boosters[:]:
+        booster.move(boosterSpeed)
+        if collide(booster, player):
+          strength += 1
+          boosters.remove(booster)
+
+      player.weaponMovement(-weaponSpeed, enemies) #Move weapon upwards and remove upon collision with enemy. 
+
+      # pygame.display.update()
+
+  def main_menu(self):
+    startFont = get_font(50)
+    running = True
+    while running:
+      screen.blit(background, (0, 0))
+      startLabel = startFont.render("Press to begin...", 1, (0, 0, 0))
+      screen.blit(startLabel, (width / 2 - startLabel.get_width() / 2, 350))
+      pygame.display.update()
+      for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+          running = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+          self.main()
     pygame.quit()
 
-
-main_menu()

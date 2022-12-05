@@ -23,10 +23,10 @@ Space Invaders is a popular game, and our game is influenced by some of the aspe
 ## User Interface Design
 
 - **Initial Concept**
-  - https://replit.com/@MichelleLu11/monkeysquared#game_screen.JPEG
-    - This is the game screen. It includes the player (dog), enemy (cat), and powerup (bone).
-  - https://replit.com/@MichelleLu11/monkeysquared#menu_screen.JPEG
-    - This is the menu screen. It includes a play button. Upon clicking the play button, the game will start.
+  [[initial game screen] (ect/game_screen.png)](https://replit.com/@MichelleLu11/monkeysquared#etc/game_screen.png)
+  - This is the game screen. It includes the player (dog), enemy (cat), and powerup (bone).
+  [[initial menu screen] (ect/menu_screen.png)](https://replit.com/@MichelleLu11/monkeysquared#etc/menu_screen.png)
+  - This is the menu screen. It includes a play button. Upon clicking the play button, the game will start.
     
     
 - **Final GUI**
@@ -71,7 +71,10 @@ The Project is broken down into the following file structure:
 * assets
     * background.png
     * ball.png
-    * cat.png
+    * cat1.png
+    * cat2.png
+    * cat3.png
+    * cat4.png
     * class_diagram.jpg
     * dog.png
     * folercontents.txt

@@ -1,6 +1,6 @@
 import pygame
-#import your controller
-from controller import Controller
+from src.controller import Controller
+from src import menu
 
 
 def main():
@@ -8,8 +8,10 @@ def main():
     #Create an instance on your controller object
     #Call your mainloop
 
+  menu.main_menu()
+
   c = Controller()
-  c.mainloop()
+  c.main_menu()
   
     
     ###### NOTHING ELSE SHOULD GO IN main(), JUST THE ABOVE 3 LINES OF CODE ######

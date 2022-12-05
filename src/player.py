@@ -2,62 +2,57 @@ import pygame
 from src.weapon import Weapon
 
 
-width = 750
-height = 750
-
 class Player():
-  cool_down = 20
+  '''Attributes for the Player.'''
+  weapon_pause = 25
   
   def __init__(self, x, y):
     self.x = x
     self.y = y
-    self.dog_img = pygame.transform.scale(pygame.image.load("assets/dog.png"), (85, 75))
-    self.weapon_img = pygame.transform.scale(pygame.image.load("assets/ball.png"), (35, 35))
-    self.mask = pygame.mask.from_surface(self.dog_img)
-
+    self.dogImage = pygame.transform.scale(pygame.image.load("assets/dog.png"), (85, 75)) #load and resize dog image.
+    self.weaponImage = pygame.transform.scale(pygame.image.load("assets/ball.png"), (35, 35)) #load and resize weapon image.
+    self.mask = pygame.mask.from_surface(self.dogImage) #creates a mask of dogImage, which tells where the image pixels are, allowing for pixel-perfect collisions. 
     self.weapons = []
-    self.cool_down_counter = 0
-      
+    self.weaponPauseCounter = 0 #Wait a certain amount of time before player can shoot weapon again. 
 
-  def weaponMovement(self, speed, objects):
-    self.cooldown()
+  def weaponMovement(self, speed, enemies):
+    '''Move weapon upwards by the speed and remove weapon upon collision with enemy or if off the screen'''
+    self.weaponPause()
     for weapon in self.weapons:
       weapon.move(speed)
-      if weapon.off_screen(height):
+      if weapon.off_screen(800):
         self.weapons.remove(weapon)
       else:
-        for object in objects:
-          if weapon.collision(object):
-            objects.remove(object)
+        for enemy in enemies:
+          if weapon.collision(enemy):
+            enemies.remove(enemy)
             if weapon in self.weapons:
               self.weapons.remove(weapon)
 
-
-  def cooldown(self):
-    if self.cooldownCount >= self.cool_down:
-      self.cooldownCount = 0
-    elif self.cooldownCount > 0:
-      self.cooldownCount += 1
+  def weaponPause(self):
+    '''Creates a break between each shooting of the weapon. '''
+    if self.weaponPauseCounter >= self.weapon_pause:
+      self.weaponPauseCounter = 0
+    elif self.weaponPauseCounter > 0:
+      self.weaponPauseCounter += 1
 
   def shoot(self):
-    if self.cooldownCount == 0:
-      weapon = Weapon(self.x+15, self.y, self.weapon_img)
+    '''Make a weapon and add it to the list when spacebar is pressed.'''
+    if self.weaponPauseCounter == 0:
+      weapon = Weapon(self.x+15, self.y, self.weaponImage)
       self.weapons.append(weapon)
-      self.cooldownCount = 1
+      self.weaponPauseCounter = 1
 
   def draw(self, window):
-    window.blit(self.dog_img, (self.x, self.y))
+    '''Draw the image'''
+    window.blit(self.dogImage, (self.x, self.y))
     for weapon in self.weapons:
       weapon.draw(window)
 
   def get_width(self):
-    return self.dog_img.get_width()
+    '''Return the width of the dog image.'''
+    return self.dogImage.get_width()
 
   def get_height(self):
-    return self.dog_img.get_height()
-
-  def get_width(self):
-    return self.dog_img.get_width()
-
-  def get_height(self):
-    return self.dog_img.get_height()
+    '''Return the height of the dog image.'''
+    return self.dogImage.get_height()
