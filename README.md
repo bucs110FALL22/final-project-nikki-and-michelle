@@ -46,7 +46,9 @@ Space Invaders is a popular game, and our game is influenced by some of the aspe
          - a short description of the module >>
            
 * Class Interface Design
-    * [class diagram](https://drive.google.com/file/d/1McgleuoHiwyq2lsYEGvpBBlLcfoMIo3N/view?usp=sharing)
+    * [class diagram]
+    * https://replit.com/@MichelleLu11/monkeysquared#class%20interface.png
+      
   
 * Classes
     * Ability - How the player will be able to attack the enemies. The ability will travel upward since the player character will be located at the bottom of the screen and the enemies will be coming from the top.
