@@ -30,10 +30,10 @@ Space Invaders is a popular game, and our game is influenced by some of the aspe
     
     
 - **Final GUI**
-  [Player Attacking] (ect/attack.png)
+  [Game Screen] (ect/attack.png)
   [Click to Begin] (ect/begin.png)
   [Lose Screen] (ect/lose.png)
-  [Main Menu Screen] (ect/menuScreen.png) and (ect/menuScreen2.png)
+  [Main Menu Screen] (ect/menuScreen2.png)
   - https://replit.com/@MichelleLu11/monkeysquared#etc/gui.png
 
 ***        
@@ -42,21 +42,16 @@ Space Invaders is a popular game, and our game is influenced by some of the aspe
 
 * Non-Standard libraries
     
-    * << You should have a list of any additional libraries or modules used (pygame, request) beyond non-standard python. 
-         For each additional module you should include
-         - url for the module documentation
-         - a short description of the module >>
-           
 * Class Interface Design
     * [Class Interface Design] (ect/classinterface.png)
-    
-      
   
 * Classes
     * Weapon - How the player will be able to attack the enemies. The weapon (a ball) will travel upward since the enemies will be coming from the top of the screen.
     * Enemy - The enemies (cat) will arrive from the top of the screen, traveling downward toward the player character (dog). Each will have one life. 
     * Player - The player character (dog) will be free to move anywhere around the screen. The player will start with a strength of 5. If an enemy successfully make it past the player character, the player character will lose a strength. 
     * Booster - Randomly scattered throughout the game, there will be power boosters that appear from the top of the screen and will travel downwards. If the player manages to collide with one, they will either gain a strength.
+    * Button
+    * 
 
 
 ## Project Structure and File List
@@ -87,10 +82,11 @@ The Project is broken down into the following file structure:
 * etc
     * attack.png
     * begin.png
-    * class interface.png
+    * classinterface.png
     * dogvscat.png
     * folderecontents.txt
     * game_screen.png
+    * gui.png
     * level.png
     * lost.png
     * menu_screen.png
@@ -113,6 +109,10 @@ The Project is broken down into the following file structure:
 
 | Step                 |Procedure             |Expected Results                   |
 |----------------------|:--------------------:|----------------------------------:|
-|  1                   | open terminal, enter  |GUI window appears with count = 0  |
-|  2                   | click count button   | display changes to count = 1      |
-|  3                   |
+|  1                   | Run program          | GUI window displays Main Menu screen|
+|  2                   | Click "Start" Button | Display changes to "Press to begin"|
+|  3                   | Press Anywhere on Screen | Display changes to main game screen |
+|  4                   | Press up, down, left, or right keyboard arrow | Player moves around the screen according to the arrow pressed |
+|  5                   | Press spacebar key   | Player shoots a ball. If the ball comes into contact with a cat, the cat will disappear |
+|  6                   | Click on X located at the very right | Display changes to "Press to begin" |
+

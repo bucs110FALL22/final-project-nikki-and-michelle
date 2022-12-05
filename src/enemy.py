@@ -2,10 +2,10 @@ import pygame
 
 class Enemy():
   '''Attribute for the Enemy.'''
-  cat1 = pygame.transform.scale(pygame.image.load("assets/cat1.png"), (60, 50))
-  cat2 = pygame.transform.scale(pygame.image.load("assets/cat2.png"), (80, 70))
-  cat3 = pygame.transform.scale(pygame.image.load("assets/cat3.png"), (70, 80))
-  cat4 = pygame.transform.scale(pygame.image.load("assets/cat4.png"), (80, 60))
+  cat1 = pygame.transform.scale(pygame.image.load("assets/cat1.png"), (70, 60))
+  cat2 = pygame.transform.scale(pygame.image.load("assets/cat2.png"), (90, 80))
+  cat3 = pygame.transform.scale(pygame.image.load("assets/cat3.png"), (80, 90))
+  cat4 = pygame.transform.scale(pygame.image.load("assets/cat4.png"), (90, 70))
   Options = {"c1": (cat1), "c2": (cat2), "c3": (cat3), "c4": (cat4)}
   
   def __init__(self, x, y, options):

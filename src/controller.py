@@ -22,12 +22,6 @@ def collide(object1, object2):
 
 
 class Controller():
-  # width = 800
-  # height = 800
-  # screen = pygame.display.set_mode((width, height))
-  # pygame.display.set_caption("CAT ATTACK")
-  # background = pygame.transform.scale(pygame.image.load("assets/grass.png"), (width, height))
-
   def __init__(self):
     pygame.init()
     pygame.font.init()
@@ -44,7 +38,7 @@ class Controller():
     fps = 60
     level = 0
     strength = 5
-    player = Player(400, 720)
+    player = Player(580, 640)
     clock = pygame.time.Clock()
 
     enemies = []
