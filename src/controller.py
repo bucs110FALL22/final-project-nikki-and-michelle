@@ -122,7 +122,7 @@ class Controller():
 
       for event in pygame.event.get():
         if event.type == pygame.QUIT:
-          quit()
+          running = False
 
 
       '''Keyboard detection and restriction of the player movement boundary.'''

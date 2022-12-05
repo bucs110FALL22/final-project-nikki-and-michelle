@@ -23,22 +23,24 @@ Space Invaders is a popular game, and our game is influenced by some of the aspe
 ## User Interface Design
 
 - **Initial Concept**
-  [[initial game screen] (ect/game_screen.png)](https://replit.com/@MichelleLu11/monkeysquared#etc/game_screen.png)
+  [[initial Game Screen] (ect/game_screen.png)](https://replit.com/@MichelleLu11/monkeysquared#etc/game_screen.png)
   - This is the game screen. It includes the player (dog), enemy (cat), and powerup (bone).
-  [[initial menu screen] (ect/menu_screen.png)](https://replit.com/@MichelleLu11/monkeysquared#etc/menu_screen.png)
+  [[initial Menu Screen] (ect/menu_screen.png)](https://replit.com/@MichelleLu11/monkeysquared#etc/menu_screen.png)
   - This is the menu screen. It includes a play button. Upon clicking the play button, the game will start.
     
     
 - **Final GUI**
-  - << You should also have a screenshot of each screen for your final GUI >>
+  [Player Attacking] (ect/attack.png)
+  [Click to Begin] (ect/begin.png)
+  [Lose Screen] (ect/lose.png)
+  [Main Menu Screen] (ect/menuScreen.png) and (ect/menuScreen2.png)
+  - https://replit.com/@MichelleLu11/monkeysquared#etc/gui.png
 
 ***        
 
 ## Program Design
 
 * Non-Standard libraries
-  * pygame
-  * random
     
     * << You should have a list of any additional libraries or modules used (pygame, request) beyond non-standard python. 
          For each additional module you should include
@@ -46,16 +48,15 @@ Space Invaders is a popular game, and our game is influenced by some of the aspe
          - a short description of the module >>
            
 * Class Interface Design
-    * [class diagram]
-    * https://replit.com/@MichelleLu11/monkeysquared#class%20interface.png
+    * [Class Interface Design] (ect/classinterface.png)
+    
       
   
 * Classes
-    * Ability - How the player will be able to attack the enemies. The ability will travel upward since the player character will be located at the bottom of the screen and the enemies will be coming from the top.
-    * Background - Moving grass-like background that will move upwards, giving the impression that the player character is advancing forward. 
-    * Enemy - The enemies (either cat or dog, the opposite of the player character) will arrive from the top of the screen, traveling downward toward the player character. Each will have one life. 
-    * Player - The player character (either cat or dog) will be located at the bottom of the screen, and it can only move sideways. The player will have 3 lifes. If an enemy successfully make it past the player character, the player character will lose a life. 
-    * Powerup - Randomly scattered throughout the game, there will be power boosters that appear from the top of the screen and will travel downwards. If the player manages to get one, they will either gain a life or get a boost in their ability. 
+    * Weapon - How the player will be able to attack the enemies. The weapon (a ball) will travel upward since the enemies will be coming from the top of the screen.
+    * Enemy - The enemies (cat) will arrive from the top of the screen, traveling downward toward the player character (dog). Each will have one life. 
+    * Player - The player character (dog) will be free to move anywhere around the screen. The player will start with a strength of 5. If an enemy successfully make it past the player character, the player character will lose a strength. 
+    * Booster - Randomly scattered throughout the game, there will be power boosters that appear from the top of the screen and will travel downwards. If the player manages to collide with one, they will either gain a strength.
 
 
 ## Project Structure and File List
@@ -64,8 +65,12 @@ The Project is broken down into the following file structure:
 
 * main.py
 * src
+    * booster.py
+    * button.py
     * controller.py
     * enemy.py
+    * foldercontents.txt
+    * menu.py
     * player.py
     * weapon.py
 * assets
@@ -79,9 +84,17 @@ The Project is broken down into the following file structure:
     * dog.png
     * folercontents.txt
     * grass.png
-    * start.png
 * etc
+    * attack.png
+    * begin.png
+    * class interface.png
+    * dogvscat.png
     * folderecontents.txt
+    * game_screen.png
+    * level.png
+    * lost.png
+    * menu_screen.png
+    * menuScreen2.png
     * milestone2.md
     * milestone3.md
 
