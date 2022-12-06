@@ -4,12 +4,10 @@ from src.player import Player
 from src.enemy import Enemy
 from src.booster import Booster
 
-# # pygame.font.init()
 
 width = 1280
 height = 720
 screen = pygame.display.set_mode((width, height))
-pygame.display.set_caption("CAT ATTACK")
 background = pygame.transform.scale(pygame.image.load("assets/grass.png"), (width, height)) 
 
 def get_font(size):
@@ -31,26 +29,25 @@ class Controller():
     offset_y = object2.y - object1.y
     return object1.mask.overlap(object2.mask, (offset_x, offset_y)) != None
       
-
   def main(self):
     print("running main")
     running = True
     fps = 60
     level = 0
     strength = 5
-    player = Player(580, 640)
+    player = Player(580, 610)
     clock = pygame.time.Clock()
 
     enemies = []
-    numEnemy = 5
-    enemySpeed = 1
+    numEnemy = 2
+    enemySpeed = 2
 
     boosters = []
     numBooster = random.randrange(1,3)
-    boosterSpeed = 3
+    boosterSpeed = 5
 
-    playerSpeed = 5
-    weaponSpeed = 5
+    playerSpeed = 9
+    weaponSpeed = 9
 
     mainFont = get_font(30)
     lostFont = get_font(50)
@@ -82,7 +79,6 @@ class Controller():
 
       pygame.display.update()
 
-
     while running:
       clock.tick(fps)
       drawScreen() #Draw images.
@@ -102,13 +98,11 @@ class Controller():
         level += 1
         numEnemy += 5
         for i in range (numEnemy):
-          enemy = Enemy(random.randrange(50, width - 100), random.randrange(-1600,-100), random.choice(["c1", "c2", "c3", "c4"])) 
+          enemy = Enemy(random.randrange(50, width - 100), random.randrange(-1600,-100), random.choice(["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8"])) 
           enemies.append(enemy)
 
-
       '''Generate boosters at certain levels and random positioning of boosters' entrance.'''
-      # if level % 5 == 0 and len(boosters) == 0:
-      if level > 0 and len(boosters) == 0:
+      if level % 5 == 0 and len(boosters) == 0:
         numBooster += 0
         for i in range(numBooster):
           booster = Booster(random.randrange(50, width - 100), random.randrange(-1500, -100))
@@ -118,12 +112,11 @@ class Controller():
         if event.type == pygame.QUIT:
           running = False
 
-
       '''Keyboard detection and restriction of the player movement boundary.'''
       keyPressed = pygame.key.get_pressed() #Return a dictionary of all the keys and tells you whether the keys are pressed or not.
       if keyPressed[pygame.K_UP] and player.y - playerSpeed > 0:
         player.y -= playerSpeed
-      if keyPressed[pygame.K_DOWN] and player.y + playerSpeed + player.get_height() + 15 < height:
+      if keyPressed[pygame.K_DOWN] and player.y + playerSpeed + player.get_height() < height:
         player.y += playerSpeed
       if keyPressed[pygame.K_LEFT] and player.x - playerSpeed > 0:
         player.x -= playerSpeed
@@ -139,7 +132,6 @@ class Controller():
           strength -= 1
           enemies.remove(enemy)
 
-
       '''Increase in strength upon collision between booster image and dog image.'''
       for booster in boosters[:]:
         booster.move(boosterSpeed)
@@ -149,7 +141,7 @@ class Controller():
 
       player.weaponMovement(-weaponSpeed, enemies) #Move weapon upwards and remove upon collision with enemy. 
 
-      # pygame.display.update()
+      pygame.display.update()
 
   def main_menu(self):
     startFont = get_font(50)

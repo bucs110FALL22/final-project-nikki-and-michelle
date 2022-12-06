@@ -9,9 +9,11 @@ pygame.display.set_caption("Menu")
 
 BG = pygame.image.load("assets/background.jpg")
 
+'''Changes the font and font size'''
 def get_font(size):
  return pygame.font.Font("assets/font.ttf", size)
   
+'''Creates the play button'''  
 def play():
   pygame.display.set_caption("Play")
   while True:
@@ -33,7 +35,8 @@ def play():
         if PLAY_BACK.checkForInput(PLAY_MOUSE_POS):
           main_menu()
     pygame.display.update()
-  
+
+''' Switches the screen from menu screen to game screen'''
 def main_menu():
   pygame.display.set_caption("Menu")
 

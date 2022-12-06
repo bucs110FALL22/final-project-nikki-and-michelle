@@ -4,13 +4,13 @@ from src.weapon import Weapon
 
 class Player():
   '''Attributes for the Player.'''
-  weapon_pause = 25
+  weapon_pause = 10
   
   def __init__(self, x, y):
     self.x = x
     self.y = y
-    self.dogImage = pygame.transform.scale(pygame.image.load("assets/dog.png"), (85, 75)) #load and resize dog image.
-    self.weaponImage = pygame.transform.scale(pygame.image.load("assets/ball.png"), (35, 35)) #load and resize weapon image.
+    self.dogImage = pygame.transform.scale(pygame.image.load("assets/dog.png"), (140, 120)) #load and resize dog image.
+    self.weaponImage = pygame.transform.scale(pygame.image.load("assets/ball.png"), (40, 40)) #load and resize weapon image.
     self.mask = pygame.mask.from_surface(self.dogImage) #creates a mask of dogImage, which tells where the image pixels are, allowing for pixel-perfect collisions. 
     self.weapons = []
     self.weaponPauseCounter = 0 #Wait a certain amount of time before player can shoot weapon again. 
@@ -39,7 +39,7 @@ class Player():
   def shoot(self):
     '''Make a weapon and add it to the list when spacebar is pressed.'''
     if self.weaponPauseCounter == 0:
-      weapon = Weapon(self.x+15, self.y, self.weaponImage)
+      weapon = Weapon(self.x+50, self.y, self.weaponImage)
       self.weapons.append(weapon)
       self.weaponPauseCounter = 1
 

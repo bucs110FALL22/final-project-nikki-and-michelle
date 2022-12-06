@@ -7,7 +7,7 @@
 
 https://replit.com/join/embmmbslcl-michellelu11
 
-<< [link to demo presentation slides](#) >>
+[(https://docs.google.com/presentation/d/1Rce6Nk0iEW90KG6szCzRJ1Vt-jYvPCtduDy3YlERhqc/edit?usp=sharing)](#)
 
 ### Team: Monkey Squared
 #### Nikki Tan and Michelle Lu
@@ -16,7 +16,7 @@ https://replit.com/join/embmmbslcl-michellelu11
 
 ## Project Description
 
-Space Invaders is a popular game, and our game is influenced by some of the aspects of that game. Our game will be a battle between cats and dogs! The user will be utilizing a dog as their player. The enemy will be the cat. The player will move left and right across the bottom of the screen. It will shoot at the enemy (there will be multiple enemies postioned randomly throughout the screen) to earn inventory (bones), which helps them level up. There will also be treats appearing randomly on the screen for power ups.
+Space Invaders is a popular game, and our game is influenced by some of the aspects of that game. Our game will be a battle between cats and dogs! The user will be utilizing a dog as their player. The enemy will be the cat. The player will be allowed to move anywhere on the screen. It will shoot at the enemy (there will be multiple enemies postioned randomly throughout the screen) There will also be treats appearing randomly on the screen for power ups.
 
 ***    
 
@@ -30,11 +30,10 @@ Space Invaders is a popular game, and our game is influenced by some of the aspe
     
     
 - **Final GUI**
-  [Game Screen] (ect/attack.png)
-  [Click to Begin] (ect/begin.png)
-  [Lose Screen] (ect/lose.png)
+  [Game Screen] (ect/dogattack.png)
+  [Click to Begin] (ect/presstobegin.png)
+  [Lose Screen] (ect/catvictory.png)
   [Main Menu Screen] (ect/menuScreen2.png)
-  - https://replit.com/@MichelleLu11/monkeysquared#etc/gui.png
 
 ***        
 
@@ -50,8 +49,9 @@ Space Invaders is a popular game, and our game is influenced by some of the aspe
     * Enemy - The enemies (cat) will arrive from the top of the screen, traveling downward toward the player character (dog). Each will have one life. 
     * Player - The player character (dog) will be free to move anywhere around the screen. The player will start with a strength of 5. If an enemy successfully make it past the player character, the player character will lose a strength. 
     * Booster - Randomly scattered throughout the game, there will be power boosters that appear from the top of the screen and will travel downwards. If the player manages to collide with one, they will either gain a strength.
-    * Button
-    * 
+<<<<<<< HEAD
+    * Button - Creates a button that changes color when the mouse hovers over it and changes screens when clicked.
+
 
 
 ## Project Structure and File List
@@ -75,11 +75,24 @@ The Project is broken down into the following file structure:
     * cat2.png
     * cat3.png
     * cat4.png
+    * cat5.png
+    * cat6.png
+    * cat7.png
+    * cat8.png
     * class_diagram.jpg
     * dog.png
     * folercontents.txt
     * grass.png
 * etc
+    * bone booster.png
+    * cat victory.png
+    * classinterface.png
+    * dog attack.png
+    * dog vs cat.png
+    * folderecontents.txt
+    * game_screen.png
+    * gui.png
+    * level up.png
     * attack.png
     * begin.png
     * classinterface.png
@@ -93,6 +106,7 @@ The Project is broken down into the following file structure:
     * menuScreen2.png
     * milestone2.md
     * milestone3.md
+    * presstobegin.png
 
 ***
 
@@ -115,4 +129,3 @@ The Project is broken down into the following file structure:
 |  4                   | Press up, down, left, or right keyboard arrow | Player moves around the screen according to the arrow pressed |
 |  5                   | Press spacebar key   | Player shoots a ball. If the ball comes into contact with a cat, the cat will disappear |
 |  6                   | Click on X located at the very right | Display changes to "Press to begin" |
-
