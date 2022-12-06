@@ -23,17 +23,17 @@ Space Invaders is a popular game, and our game is influenced by some of the aspe
 ## User Interface Design
 
 - **Initial Concept**
-  [[initial Game Screen] (ect/game_screen.png)](https://replit.com/@MichelleLu11/monkeysquared#etc/game_screen.png)
+  [[initial Game Screen] (etc/game_screen.png)](https://replit.com/@MichelleLu11/monkeysquared#etc/game_screen.png)
   - This is the game screen. It includes the player (dog), enemy (cat), and powerup (bone).
-  [[initial Menu Screen] (ect/menu_screen.png)](https://replit.com/@MichelleLu11/monkeysquared#etc/menu_screen.png)
+  [[initial Menu Screen] (etc/menu_screen.png)](https://replit.com/@MichelleLu11/monkeysquared#etc/menu_screen.png)
   - This is the menu screen. It includes a play button. Upon clicking the play button, the game will start.
     
     
 - **Final GUI**
   [Game Screen] (ect/dogattack.png)
-  [Click to Begin] (ect/presstobegin.png)
-  [Lose Screen] (ect/catvictory.png)
-  [Main Menu Screen] (ect/menuScreen2.png)
+  [Click to Begin] (etc/presstobegin.png)
+  [Lose Screen] (etc/catvictory.png)
+  [Main Menu Screen] (etc/menuScreen2.png)
 
 ***        
 
@@ -42,7 +42,7 @@ Space Invaders is a popular game, and our game is influenced by some of the aspe
 * Non-Standard libraries
     
 * Class Interface Design
-    * [Class Interface Design] (ect/classinterface.png)
+    * [Class Interface Design] (etc/classinterface.png)
   
 * Classes
     * Weapon - How the player will be able to attack the enemies. The weapon (a ball) will travel upward since the enemies will be coming from the top of the screen.
