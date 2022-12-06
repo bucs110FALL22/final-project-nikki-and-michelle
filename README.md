@@ -30,10 +30,10 @@ Space Invaders is a popular game, and our game is influenced by some of the aspe
     
     
 - **Final GUI**
-  [Game Screen] (ect/dogattack.png)
-  [Click to Begin] (etc/presstobegin.png)
-  [Lose Screen] (etc/catvictory.png)
-  [Main Menu Screen] (etc/menuScreen2.png)
+  [[Game Screen] (ect/dogattack.png)]
+  [[Click to Begin] (etc/presstobegin.png)]
+  [[Lose Screen] (etc/catvictory.png)]
+  [[Main Menu Screen] (etc/menuScreen2.png)]
 
 ***        
 
@@ -42,14 +42,13 @@ Space Invaders is a popular game, and our game is influenced by some of the aspe
 * Non-Standard libraries
     
 * Class Interface Design
-    * [Class Interface Design] (etc/classinterface.png)
+    * [[Class Interface Design] (etc/classinterface.png)]
   
 * Classes
     * Weapon - How the player will be able to attack the enemies. The weapon (a ball) will travel upward since the enemies will be coming from the top of the screen.
     * Enemy - The enemies (cat) will arrive from the top of the screen, traveling downward toward the player character (dog). Each will have one life. 
     * Player - The player character (dog) will be free to move anywhere around the screen. The player will start with a strength of 5. If an enemy successfully make it past the player character, the player character will lose a strength. 
     * Booster - Randomly scattered throughout the game, there will be power boosters that appear from the top of the screen and will travel downwards. If the player manages to collide with one, they will either gain a strength.
-<<<<<<< HEAD
     * Button - Creates a button that changes color when the mouse hovers over it and changes screens when clicked.
 
 
